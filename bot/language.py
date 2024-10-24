@@ -24,7 +24,7 @@ data = {
         "customer": "👤 Men buyurtmachiman",
         "vacancy": "💼 Vakansiyalar/ Vakansiya joylashtirish",
         "language": "🇺🇿 🇬🇧 Tilni o'zgartirish",
-        "welcome": "Kwork botiga hush kelibsiz",
+        "welcome": "Kwork botiga xush kelibsiz",
         "choose_lang": "Tilni tanlang 👇",
         "fullname": "To'liq ism familyani kiriting ✍🏻",
         "phone_number": "Telefon nomerni yuboring 👇",

@@ -10,13 +10,22 @@ from bot.language import data
 from bot.state import UserState
 from bot.utils import task_design
 from db.config import session
-from db.model import Task, Customer, Freelancer
+from db.model import Task, Customer, Freelancer, User
 from dispatcher import dp
 
 
 @dp.message(CommandStart())
 async def start_handler(msg: Message, state: FSMContext):
     query = select(Customer).where(Customer.user_id == msg.from_user.id)
+    user_query = select(User).where(User.telegram_id == msg.from_user.id)
+    user_result = session.execute(user_query).fetchone()
+    if user_result is None:
+        new_user = User(
+            telegram_id=msg.from_user.id,
+            username=msg.from_user.username,
+        )
+        session.add(new_user)
+        session.commit()
     customer = session.execute(query).fetchone()
     if not customer:
         await msg.answer(begin_text)

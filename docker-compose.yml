@@ -1,14 +1,13 @@
-
 services:
   bot:
     build: .
     restart: always
     container_name: shwork_bot  # O'zgartirilgan nom
     environment:
-      BOT_TOKEN: 7318906816:AAGIdwRjL3tJwodaxSZI1OPGpRpYUpy2m2I
-      DB_NAME: shwork
+      BOT_TOKEN: 7718632127:AAEOND5R0e6XJgFZ7mMVXv2dY8rbL3jZrzI #bot token
+      DB_NAME: bot #databasedai nomga o'zgaradi
       DB_PASSWORD: 1
-      DB_HOST: localhost
+      DB_HOST: pg
       DB_USER: postgres
       DB_PORT: 5432
     depends_on:
@@ -20,7 +19,10 @@ services:
     restart: always
     container_name: shwork_pg  # O'zgartirilgan nomp
     environment:
-      POSTGRES_PASSWORD: 1
+      DB_NAME: bot  # Create the database automatically
+      DB_USER: postgres
+      DB_PASSWORD: 1
+
     ports:
       - "5432:5432"
     volumes:
